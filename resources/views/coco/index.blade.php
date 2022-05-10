@@ -12,11 +12,17 @@
             @include('layout.nav')
         </header>
         <div class="wrapper">
-            <h1>Welcome</h1>
             <div class="main">
                 <div class="container">
-                    {{-- {{dd($navbars_array);}} --}}
-                    @include('layout.article')
+                    <div class="row justify-content-center">
+                        <div class="content_left col-10">
+                            <h1>Welcome</h1>
+                            @include('layout.article')
+                        </div>
+                        <div class="content_right col-2">
+                            <h1>Welcome</h1>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

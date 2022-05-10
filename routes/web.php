@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\coco\CocoController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,7 @@ use App\Http\Controllers\coco\CocoController;
 // });
 Route::get('/', [CocoController::class, 'index']);
 Route::prefix('home')->group(function(){
+    Route::get('/', [CocoController::class, 'index']);
     Route::get('/title' ,[CocoController::class, 'index']);
+    Route::get('/test' ,[TestController::class, 'index']);
 });

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <div class="container">
         <img class="nav_img" src="{{ URL::asset('storage/image/chicken.png') }}" width='80px' height="80px">
         <a class="navbar-brand" href="#">咕咕雞農場</a>
@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-            <ul class="navbar-nav ">
+            <ul class="navbar-nav">
                 @foreach ($navbars_array as $navbar_array)
                     @if (isset($navbar_array->SubNav) && $navbar_array->SubNav)
                     <li class="nav-item dropdown h5">
@@ -14,7 +14,9 @@
                         <div>
                             <ul class="dropdown-menu">
                             @foreach ($navbar_array->SubNav as $SubNav)
-                                <li><a class="dropdown-item" href="#">{{ $SubNav->name }}</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">{{ $SubNav->name }}</a>
+                                </li>
                             @endforeach
                             </ul>
                         </div>

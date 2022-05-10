@@ -2,8 +2,9 @@
 @foreach ($articles as $key => $data)
     <?=$key%3==0?"<ul class='list-group list-group-horizontal-lg'>":''?>
     <li class="list-group-item">
+        {{-- {{ dd($data ); }} --}}
         <a href="{{ $data->url }}">
-        <div class="img">
+        <div class="img card">
             <img src="{{ $data->image }}" class="article_img rounded mx-auto d-block">
         </div>
         <div class="txt">
@@ -18,6 +19,7 @@
     <?=($key%3==2)?'</ul>':''?>
 @endforeach
 </div>
+
                 {{-- <ul class="list-group list-group-horizontal-sm"  width='750px' height="200px">
                     <li class="list-group-item">
                         <img src="http://127.0.0.1:8000/storage/coco/uploads/CocoArticle/b74e795b879fa29fde5830fdb116cdd5.jpg" width='230px' height="130px">

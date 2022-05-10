@@ -12,42 +12,46 @@ html, body {
 header {
     padding: 50px;
     background-color: white;
-}
-/* nav{
-    height: 13%;
+    height: 100px;
     width:100%;
-} */
-/* nav ul{
-    float: right;
-    width: 230px;
-    margin-right: 20px;
-} */
-/* nav ul li{
+}
+nav{
+
+}
+nav ul{
+    /* background-color: 	#212529; */
+}
+nav ul li{
     line-height: 40px; 
     margin: 0 5px;
-} */
-/* nav ul li a{
+}
+nav ul li a{
     color: white;
     font-size: 17px;
     padding: 7px 13px;
     border-radius: 3px;
     text-transform: uppercase;
     text-align:center;
-} */
-.dropdown:hover .dropdown-menu {
-    display: block;
 }
 /* nav a.active,nav a:hover{
     background: #1b9bff;
     transition: .5s;
 } */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
 .wrapper {
     min-height: 100%;
-    margin-bottom: -50px;
+    /* margin-bottom: -50px; */
 }
 .main {
     padding-bottom: 50px;
 }
+@media (max-width: 1130px) {
+    .content_right{ display: none;}
+}
+
+
 .footer_text_color{
     color: white;
 }
@@ -77,9 +81,14 @@ img{
     text-align: center;
 }
 /* 文章圖片觸碰設定 start */
+.list-group-item{
+    width: 33.333%;
+}
 .list-group-item .img .article_img{
-    width: 230px;
-    height: 130px;
+    width: initial;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 /* 文章圖片觸碰設定 end */
 
@@ -94,32 +103,16 @@ img{
     text-align: center;
 }
 
- /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 576px) {
-    nav a{
-        visibility:hidden;
-    }
-    .nav_img{
-        visibility:hidden;
-    }
+    
 }
 
- /* Medium devices (tablets, 768px and up) */
 @media (max-width: 768px) {
     
 }
 
- /* Large devices (desktops, 992px and up) */
 @media (max-width: 992px) {
-    .list-group-item .img .article_img{
-        width: initial;
-        display: block;
-        max-width: 100%;
-        height: auto;
-    }
-}
-
- /* Extra large devices (large desktops, 1200px and up) */
-@media (max-width: 1200px) {
-
+    /* nav a{visibility:hidden;}
+    .nav_img{visibility:hidden;} */
+    .list-group-item{width: 100%;}
 }
