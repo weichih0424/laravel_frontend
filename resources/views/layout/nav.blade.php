@@ -7,15 +7,18 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav">
+                <li class="nav-item h5">
+                    <a class="nav-link" href="/">首頁</a>
+                </li>
                 @foreach ($navbars_array as $navbar_array)
                     @if (isset($navbar_array->SubNav) && $navbar_array->SubNav)
                     <li class="nav-item dropdown h5">
-                        <a class="nav-link" href="#">{{ $navbar_array->name }}</a>
+                        <a class="nav-link" href="{{ $navbar_array->url }}">{{ $navbar_array->name }}</a>
                         <div>
                             <ul class="dropdown-menu">
                             @foreach ($navbar_array->SubNav as $SubNav)
                                 <li>
-                                    <a class="dropdown-item" href="#">{{ $SubNav->name }}</a>
+                                    <a class="dropdown-item" href="{{ $SubNav->url }}">{{ $SubNav->name }}</a>
                                 </li>
                             @endforeach
                             </ul>
@@ -23,7 +26,7 @@
                     </li>
                     @else
                     <li class="nav-item h5">
-                        <a class="nav-link" href="#">{{ $navbar_array->name }}</a>
+                        <a class="nav-link" href="{{ $navbar_array->url }}">{{ $navbar_array->name }}</a>
                     </li>
                     @endif
                 @endforeach
