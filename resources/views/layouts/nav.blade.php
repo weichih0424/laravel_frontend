@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <div class="container">
         <img class="nav_img" src="{{ URL::asset('storage/image/chicken.png') }}" width='80px' height="80px">
-        <a class="navbar-brand" href="#">咕咕雞農場</a>
+        <a class="navbar-brand" href="/">咕咕雞農場</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

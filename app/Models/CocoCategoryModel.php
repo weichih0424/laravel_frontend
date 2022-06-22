@@ -11,9 +11,9 @@ class CocoCategoryModel extends Model
 
     protected $table = 'coco_category';
     
-    protected $fillable = [
-        'name',
-        'url',
-        'status',
-    ];
+    // protected $fillable = [
+    //     'name',
+    //     'url',
+    //     'status',
+    // ];
 }

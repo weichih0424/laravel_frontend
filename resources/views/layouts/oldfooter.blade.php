@@ -114,3 +114,15 @@
     <!-- Copyright -->
 </footer>
 <!-- Footer -->
+@section("script")
+<script>
+$('#footer__btn').click(function () {
+    // alert("123");
+    if( $('footer').hasClass('is-expanded')){
+        $('footer').removeClass('is-expanded')
+    }else{
+        $('footer').addClass('is-expanded')
+    }
+})
+</script>
+@endsection

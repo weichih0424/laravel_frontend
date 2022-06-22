@@ -1,15 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\coco\Services;
+namespace App\Services;
+use App\Repositories\HeaderNavRepository;
 
-use App\Http\Controllers\Controller;
-use App\models\CocoNavModel;
-
-class HeaderNavService extends Controller
+class HeaderNavService
 {
+    private $HeaderNavRepo;
+
+    public function __construct(HeaderNavRepository $HeaderNavRepo)
+    {
+        $this->HeaderNavRepo = $HeaderNavRepo;
+    }
+
     public function header_nav(){
-        $navbars = CocoNavModel::where('status', '=', 1)->where('position', '<', 2)->orderBy('id','DESC')->get();
-        $navbars_parent = CocoNavModel::where('status', '=', 1)->where('position',2)->orderBy('id','DESC')->get();
+        $navbars = $this->HeaderNavRepo->get_navbars();
+        $navbars_parent = $this->HeaderNavRepo->get_navbars_parent();
+        
         $navbars_array = array();
         
         foreach($navbars as $key => $v){

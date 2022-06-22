@@ -1,4 +1,4 @@
-@extends('layout.index')
+@extends('layouts.layout.index')
 
 @section('main')
     <h1>我是首頁</h1>

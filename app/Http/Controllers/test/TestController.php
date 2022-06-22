@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\coco;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Controllers\coco\Services\HeaderNavService;
+use Illuminate\Support\Facades\Log;
+// use Log;
 
-class HomeController extends Controller
+class TestController extends Controller
 {
-    private $header_nav;
-
-    function __construct(HeaderNavService $header_nav)
-    {
-        $this->header_nav = $header_nav;
-    }
-
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $header="首頁";
-        $navbars_array = $this->header_nav->header_nav();
-
-        return view("coco.page_home", compact('header','navbars_array'));
+        return view('test.index');
     }
+    public function getAjax(Request $request){
 
+        $input = $request->all();
+        Log::info($input);
+        
+        return response()->json(['success'=>'Got Simple Ajax Request.']);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +31,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -41,7 +42,9 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // return redirect(('/test'));
+        // return view('test.show');
     }
 
     /**

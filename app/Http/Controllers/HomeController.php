@@ -1,19 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\coco;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\HeaderNavService;
 
-class TestController extends Controller
+class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $header_nav;
+
+    function __construct(HeaderNavService $header_nav)
+    {
+        $this->header_nav = $header_nav;
+    }
+
     public function index()
     {
-        return view('test.index');
+        $header="首頁";
+        $navbars_array = $this->header_nav->header_nav();
+
+        return view("coco.page_home.page_home", compact('header','navbars_array'));
     }
 
     /**
