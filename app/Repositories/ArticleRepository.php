@@ -3,7 +3,6 @@ namespace App\Repositories;
 
 use Illuminate\Http\Request;
 use App\Models\CocoArticleModel;
-use Illuminate\Support\Facades\DB;
 
 class ArticleRepository
 {
@@ -14,7 +13,7 @@ class ArticleRepository
         $this->article = $article;
     }
     //  Repositories層，與Model取資料
-    public function get_CocoArticleModel($category_id)
+    public function get_category_article($category_id)
     {
         $article = $this->article
         ::where('a.status', '=', 1)
@@ -24,6 +23,37 @@ class ArticleRepository
         ->paginate(19);
 
         return $article;
-        // dd($article);
+    }
+    public function get_article_id($id)
+    {
+        $article = $this->article
+        ::where('id', '=', $id)
+        ->get();
+
+        return $article;
+    }
+    public function get_other_article($category_id, $id)
+    {
+        $article = $this->article
+        ::where('status', '=', 1)
+        ->where('select_category', 'like', '%'.$category_id.'%')
+        ->where('id', '!=', $id)
+        ->orderByRaw('ISNULL(`sort`),`sort` ASC')
+        ->orderBy('id','DESC')
+        ->take(9)
+        ->get();
+
+        return $article;
+    }
+    public function get_main_article($main_id)
+    {
+        // dd($main_id);
+        $article = $this->article
+        ->where('a.status', '=', 1)
+        ->where('a.select_category', 'like', '%'.$main_id.'%')
+        ->take(3)
+        ->get();
+
+        return $article;
     }
 }

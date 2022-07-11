@@ -12,10 +12,21 @@ class CategoryRepository
         $this->category = $category;
     }
     //  Repositories層，與Model取資料
-    public function get_CocoCategoryModel()
+    public function get_category_show()
     {
         $categorys = $this->category
         ::where('status', '=', 1)
+        ->where('category_show', '=', 1)
+        ->orderByRaw('ISNULL(`sort`),`sort` ASC')
+        ->orderBy('id','DESC')
+        ->get();
+        return $categorys;
+    }
+    public function get_main_show()
+    {
+        $categorys = $this->category
+        ::where('status', '=', 1)
+        ->where('main_show', '=', 1)
         ->orderByRaw('ISNULL(`sort`),`sort` ASC')
         ->orderBy('id','DESC')
         ->get();

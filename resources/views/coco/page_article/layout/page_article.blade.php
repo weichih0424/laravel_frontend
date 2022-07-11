@@ -33,7 +33,8 @@
                 @yield("content_left")
             </div>
             <div class="content_right col-3">
-                <h1>Welcome</h1>
+                {{-- <h1>Welcome</h1> --}}
+                @include('coco.page_article.right_bar.index')
             </div>
         </div>
     </div>

@@ -18,7 +18,7 @@
         </div>
         <div class="footer__item">
             @foreach ($footers as $footer)
-            <a href="{{ $footer->url }}">{{ $footer->name }}</a>
+            <a href="{{ $footer->url }}" target="{{ ($footer->blank==1)?'_blank':'_self' }}">{{ $footer->name }}</a>
             @endforeach
         </div>
         <div class="footer__service">
@@ -26,7 +26,7 @@
                 <p><i class="fas fa-home me-3 fa-2x"></i>114台北市內湖區瑞光路451號</p></a> 
                 <p><i class="fas fa-envelope me-3 fa-2x"></i> chouhuawen2@gmail.com</p>
                 <p><i class="fas fa-phone me-3 fa-2x"></i> 0976247221</p>
-        </div>  
+        </div>
         <div class="footer__bottom">
             <h6>
                 <a href="https://www.tvbs.com.tw/" target="_new"> TVBS 官網</a>|
@@ -111,6 +111,7 @@
         </div>
     </div>
 </footer> --}}
+@section("script")
 <script>
     $('#footer__btn').click(function () {
         if( $('footer').hasClass('is-expanded')){
@@ -120,3 +121,4 @@
         }
     })
 </script>
+@endsection

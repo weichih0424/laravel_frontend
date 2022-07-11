@@ -38,11 +38,6 @@ class CocoController extends Controller
         $header='咕咕雞商場';
         return $header;
     }
-    // public function category()
-    // {
-    //     $categorys=CocoCategoryModel::where('status', '=', 1)->orderByRaw('ISNULL(`sort`),`sort` ASC')->orderBy('id','DESC')->get();
-    //     return $categorys;
-    // }
 
     // public function category_article_processing($category_url = NULL, $page_limit = NULL)
     // {
@@ -97,17 +92,13 @@ class CocoController extends Controller
         //導覽列
         $navbars_array = $this->HeaderNavService->header_nav();
         //分類
-        // $categorys = $this->category();
         $categorys = $this->CategoryService->get();
         //footer
         $footers = $this->FooterService->get_footer();
         //文章
-        // $articles=CocoArticleModel::where('status', '=', 1)->orderByRaw('ISNULL(`sort`),`sort` ASC')->orderBy('id','DESC')->get();
-        $articles_food=CocoArticleModel::where('status', '=', 1)->where('select_category', 'like', '%1%')->orderByRaw('ISNULL(`sort`),`sort` ASC')->orderBy('id','DESC')->take(3)->get();
-        $articles_drink=CocoArticleModel::where('status', '=', 1)->where('select_category', 'like', '%2%')->orderByRaw('ISNULL(`sort`),`sort` ASC')->orderBy('id','DESC')->take(3)->get();
-        $articles_sport=CocoArticleModel::where('status', '=', 1)->where('select_category', 'like', '%3%')->orderByRaw('ISNULL(`sort`),`sort` ASC')->orderBy('id','DESC')->take(3)->get();
+        $articles = $this->ArticleService->get_main_article();
         
-        return view('coco.page_article.main', compact('header','navbars_array','categorys','articles_food','articles_drink','articles_sport','footers'));
+        return view('coco.page_article.main', compact('header','navbars_array','categorys','articles','footers'));
     }
 
     public function category_article()
@@ -133,22 +124,15 @@ class CocoController extends Controller
     public function article_info($id)
     {
         $category_id = Route::current()->getName();
-        $take_article_limit = 9;
 
         $header = $this->header();
         $navbars_array = $this->HeaderNavService->header_nav();
-        // $categorys = $this->category();
         $categorys = $this->CategoryService->get();
-        
-        // $find_category_url = CocoCategoryModel::find($category_id);
-        // $find_category_url = CocoCategoryModel::where('id', '=', $category_id)->get();
-        // $category_url = $find_category_url->url;
         $category_url = $this->CategoryService->category_url($category_id);
         $footers = $this->FooterService->get_footer();
-        // [$articles]= $this->category_article_processing($category_url,$page_limit);
-        $datas = CocoArticleModel::where('id', '=', $id)->get();
-        $articles=CocoArticleModel::where('status', '=', 1)->where('select_category', 'like', '%'.$category_id.'%')->orderByRaw('ISNULL(`sort`),`sort` ASC')->orderBy('id','DESC')->take($take_article_limit)->get();
+        $datas = $this->ArticleService->get_article($id);
+        $other_articles = $this->ArticleService->get_other_article($category_id, $id);
 
-        return view('coco.page_article.article_info', compact('header','navbars_array','categorys','category_url','datas','articles','footers'));
+        return view('coco.page_article.article_info', compact('header','navbars_array','categorys','category_url','footers','datas','other_articles'));
     }
 }

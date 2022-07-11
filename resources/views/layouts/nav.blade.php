@@ -13,12 +13,12 @@
                 @foreach ($navbars_array as $navbar_array)
                     @if (isset($navbar_array->SubNav) && $navbar_array->SubNav)
                     <li class="nav-item dropdown h5">
-                        <a class="nav-link" href="{{ $navbar_array->url }}">{{ $navbar_array->name }}</a>
+                        <a class="nav-link" href="{{ $navbar_array->url }}" target="{{ ($navbar_array->blank==1)?'_blank':'_self' }}">{{ $navbar_array->name }}</a>
                         <div>
                             <ul class="dropdown-menu">
                             @foreach ($navbar_array->SubNav as $SubNav)
                                 <li>
-                                    <a class="dropdown-item" href="{{ $SubNav->url }}">{{ $SubNav->name }}</a>
+                                    <a class="dropdown-item" href="{{ $SubNav->url }}" target="{{ ($SubNav->blank==1)?'_blank':'_self' }}">{{ $SubNav->name }}</a>
                                 </li>
                             @endforeach
                             </ul>
@@ -26,7 +26,7 @@
                     </li>
                     @else
                     <li class="nav-item h5">
-                        <a class="nav-link" href="{{ $navbar_array->url }}">{{ $navbar_array->name }}</a>
+                        <a class="nav-link" href="{{ $navbar_array->url }}" target="{{ ($navbar_array->blank==1)?'_blank':'_self' }}">{{ $navbar_array->name }}</a>
                     </li>
                     @endif
                 @endforeach

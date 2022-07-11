@@ -25,57 +25,22 @@
     </div>
 @endsection
 
-
-
-
-
 @section('content_left')
 
-                                                    {{-- 美食 --}}
-    <div class="category__title"><p>美食</p></div>
-    <div class="show_article">
-        @foreach ($articles_food as $key => $article_food)
-            <?=$key%3==0?"<ul class='list-group list-group-horizontal-lg'>":''?>
-                <li class="list-group-item">
-                    <a href="/article/food/{{$article_food->id}}">
-                    <div class="img card"><img src="{{ $article_food->image }}" class="article_img rounded mx-auto d-block"></div>
-                    <div class="txt"><h5>{{ $article_food->name }}</h5></div></a>
-                    <div class="time"><p>{{ $article_food->created_at }}</p></div>
-                </li>
-            <?=($key%3==2)?'</ul>':''?>
-        @endforeach
-    </div>
-    <div class="c-link"><a href="/article/food">看更多</a></div>
-                                                    {{-- 飲品 --}}
-    <div class="category__title"><p>飲品</p></div>
-    <div class="show_article">
-        @foreach ($articles_drink as $key => $article_drink)
-            <?=$key%3==0?"<ul class='list-group list-group-horizontal-lg'>":''?>
-                <li class="list-group-item">
-                    <a href="/article/drink/{{$article_drink->id}}">
-                    <div class="img card"><img src="{{ $article_drink->image }}" class="article_img rounded mx-auto d-block"></div>
-                    <div class="txt"><h5>{{ $article_drink->name }}</h5></div></a>
-                    <div class="time"><p>{{ $article_drink->created_at }}</p></div>
-                </li>
-            <?=($key%3==2)?'</ul>':''?>
-        @endforeach
-    </div>
-    <div class="c-link"><a href="/article/drink">看更多</a></div>
-                                                    {{-- 運動 --}}
-    <div class="category__title"><p>運動</p></div>
-    <div class="show_article">
-        @foreach ($articles_sport as $key => $article_sport)
-            <?=$key%3==0?"<ul class='list-group list-group-horizontal-lg'>":''?>
-                <li class="list-group-item">
-                    <a href="/article/sport/{{$article_sport->id}}">
-                    <div class="img card"><img src="{{ $article_sport->image }}" class="article_img rounded mx-auto d-block"></div>
-                    <div class="txt"><h5>{{ $article_sport->name }}</h5></div></a>
-                    <div class="time"><p>{{ $article_sport->created_at }}</p></div>
-                </li>
-            <?=($key%3==2)?'</ul>':''?>
-        @endforeach
-    </div>
-    <div class="c-link"><a href="/article/sport">看更多</a></div>
+@foreach ($articles as $key => $item)
+<div class="category__title"><p>{{ $articles[$key]->name }}</p></div>
+    @foreach ($item->url as $key2 => $article)
+    <?=$key2%3==0?"<ul class='list-group list-group-horizontal-lg'>":''?>
+        <li class="list-group-item">
+            <a href="/article/{{ $articles[$key]->en_name }}/{{ $article->id }}">
+            <div class="img card"><img src="{{ $article->image }}" class="article_img rounded mx-auto d-block"></div>
+            <div class="txt"><h5>{{ $article->name }}</h5></div></a>
+            <div class="time"><p>{{ $article->created_at }}</p></div>
+        </li>
+    <?=($key2%3==2)?'</ul>':''?>
+    @endforeach
+    <div class="c-link"><a href="/article/{{ $articles[$key]->en_name }}">看更多</a></div>
+@endforeach
 @stop
 
 @section("script")
