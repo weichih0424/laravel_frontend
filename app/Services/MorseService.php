@@ -207,8 +207,4 @@ class MorseService
         }
         return join( '', $msg);
     }
-    // public function get()
-    // {   
-    //     return "123";
-    // }
 }

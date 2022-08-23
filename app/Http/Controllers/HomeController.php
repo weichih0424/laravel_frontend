@@ -5,22 +5,27 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\HeaderNavService;
+use App\Services\FooterService;
 
 class HomeController extends Controller
 {
     private $header_nav;
 
-    function __construct(HeaderNavService $header_nav)
+    function __construct(
+        HeaderNavService $header_nav,
+        FooterService $FooterService)
     {
         $this->header_nav = $header_nav;
+        $this->FooterService = $FooterService;
     }
 
     public function index()
     {
         $header="首頁";
         $navbars_array = $this->header_nav->header_nav();
+        $footers = $this->FooterService->get_footer();
 
-        return view("coco.page_home.page_home", compact('header','navbars_array'));
+        return view("coco.page_home.page_home", compact('header','navbars_array','footers'));
     }
 
     /**

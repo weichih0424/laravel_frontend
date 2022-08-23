@@ -1,5 +1,5 @@
 @extends('layouts.layout.index')
-@section('meta')
+@section('head')
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/stock/modules/data.js"></script>

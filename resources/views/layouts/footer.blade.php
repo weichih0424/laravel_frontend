@@ -6,7 +6,7 @@
             <a href="https://github.com/weichih0424" class="me-4 text-reset">
                 <i class="fa-brands fa-github-square fa-3x"></i>
             </a>
-            <a href="" class="me-4 text-reset">
+            <a href="https://line.me/ti/p/GQA9pb_olw" class="me-4 text-reset">
                 <i class="fa-brands fa-line fa-3x"></i>
             </a>
             <a href="https://www.instagram.com/marzdog_black_man/" class="me-4 text-reset">

@@ -5,6 +5,7 @@ use App\Http\Controllers\CocoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\MorseController;
+use App\Http\Controllers\KkboxController;
 use App\Http\Controllers\test\TestController;
 use App\Models\CocoCategoryModel;
 
@@ -47,4 +48,14 @@ Route::prefix('/morse')->group(function(){
     Route::get('/', [MorseController::class, 'index']);
     Route::post('/post_encode', [MorseController::class, 'get_encode']);
     Route::post('/post_decode', [MorseController::class, 'get_decode']);
+});
+Route::prefix('/kkbox')->group(function(){
+    Route::get('/', [KkboxController::class, 'index']);
+    Route::get('/chart_playlists', [KkboxController::class, 'chart_playlists']);
+    Route::post('/post', [KkboxController::class, 'post_web_player']);
+});
+Route::prefix('/errors')->group(function(){
+    Route::get('/403', function () {
+        abort(403, '抱歉，未找到数据！');
+    });
 });
